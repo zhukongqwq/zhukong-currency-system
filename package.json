@@ -1,22 +1,33 @@
 {
   "name": "koishi-plugin-zhukong-currency-system",
-  "description": "竹空的货币管理插件，自用，不保证维护",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "功能强大的通用货币系统插件，支持增删改查、排行榜、自定义货币名称和提示词。（自用，不保证维护）",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "files": [
-    "lib",
-    "dist"
-  ],
+  "author": "竹空 <zhukongqwq@qq.com>",
   "license": "MIT",
-  "scripts": {},
+  "homepage": "你的项目主页，例如GitHub仓库地址",
+  "repository": {
+    "type": "git",
+    "url": "你的项目Git仓库地址"
+  },
   "keywords": [
-    "chatbot",
     "koishi",
-    "plugin"
+    "plugin",
+    "currency",
+    "money",
+    "economy"
   ],
-  "devDependencies": {},
   "peerDependencies": {
-    "koishi": "^4.18.7"
+    "koishi": "^4.18.9"
+  },
+  "koishi": {
+    "description": {
+      "zh": "一个功能完整的货币系统插件，支持查询、转账、签到、管理员操作和排行榜，并高度可定制。（自用，不保证维护）"
+    },
+    "service": {
+      "required": ["database"]
+    },
+    "locales": ["zh"]
   }
 }
