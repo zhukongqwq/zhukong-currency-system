@@ -6,10 +6,10 @@
   "typings": "lib/index.d.ts",
   "author": "竹空 <zhukongqwq@qq.com>",
   "license": "MIT",
-  "homepage": "你的项目主页，例如GitHub仓库地址",
+  "homepage": "https://github.com/zhukongqwq/zhukong-currency-system",
   "repository": {
     "type": "git",
-    "url": "你的项目Git仓库地址"
+    "url": "https://github.com/zhukongqwq/zhukong-currency-system.git"
   },
   "keywords": [
     "koishi",
