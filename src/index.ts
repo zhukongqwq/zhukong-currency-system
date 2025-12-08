@@ -253,7 +253,7 @@ export function apply(ctx: Context, config: Config) {
       }, config)
     })
   
-  // 4. 每日签到指令
+  // 4. 每日签到指令 - 修改：冷却时间改为每天0点刷新
   ctx.command(`${config.commandPrefix}daily`, `每日签到获取${config.currencyName}`)
     .alias('签到')
     .action(async ({ session }) => {
@@ -263,9 +263,27 @@ export function apply(ctx: Context, config: Config) {
       // 检查是否已签到
       const hasClaimed = await checkDailyClaimed(ctx, platform, userId, today)
       if (hasClaimed) {
-        const nextDate = new Date(Date.now() + config.dailyCooldown * 60 * 60 * 1000)
+        // 计算次日0点的时间
+        const now = new Date()
+        const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1)
+        const timeLeft = tomorrow.getTime() - now.getTime()
+        const hours = Math.floor(timeLeft / (1000 * 60 * 60))
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))
+        
+        // 格式化时间显示
+        let timeStr = ''
+        if (hours > 0) {
+          timeStr += `${hours}小时`
+        }
+        if (minutes > 0) {
+          timeStr += `${minutes}分钟`
+        }
+        if (hours === 0 && minutes === 0) {
+          timeStr = '小于1分钟'
+        }
+        
         return formatMessage(config.messages.dailyCooldown, {
-          nextTime: nextDate.toLocaleString()
+          nextTime: `${timeStr}后`
         }, config)
       }
       
