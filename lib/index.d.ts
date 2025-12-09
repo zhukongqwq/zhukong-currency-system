@@ -4,22 +4,15 @@ declare module 'koishi' {
         currency: CurrencyData;
         daily: DailyRecord;
     }
-    interface Events {
-        'currency/get'(userId: string): Promise<number> | number;
-        'currency/set'(userId: string, amount: number): Promise<void> | void;
-        'currency/add'(userId: string, amount: number): Promise<void> | void;
-    }
 }
 interface CurrencyData {
     id: number;
     userId: string;
-    platform: string;
     money: number;
 }
 interface DailyRecord {
     id: number;
     userId: string;
-    platform: string;
     date: string;
     claimedAt: Date;
 }
@@ -32,12 +25,17 @@ export interface MessageConfig {
     transferSelf: string;
     dailySuccess: string;
     dailyCooldown: string;
-    adminAddSuccess: string;
-    adminRemoveSuccess: string;
-    adminSetSuccess: string;
     rankTitle: string;
     rankEmpty: string;
     userNotFound: string;
+    adminAddSuccess: string;
+    adminRemoveSuccess: string;
+    adminSetSuccess: string;
+    adminListTitle: string;
+    adminListEmpty: string;
+    adminListItem: string;
+    adminSearchNotFound: string;
+    adminOperationNoPermission: string;
 }
 export interface Config {
     defaultMoney: number;
@@ -46,6 +44,7 @@ export interface Config {
     rankListSize: number;
     commandPrefix: string;
     currencyName: string;
+    adminUsers: string[];
     messages: MessageConfig;
 }
 export declare const Config: Schema<Config>;

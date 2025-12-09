@@ -1,6 +1,6 @@
 {
   "name": "koishi-plugin-zhukong-currency-system",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "功能强大的通用货币系统插件，支持增删改查、排行榜、自定义货币名称和提示词。（自用，不保证维护）",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -33,5 +33,25 @@
     "locales": [
       "zh"
     ]
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "koishi": "^4.18.9"
+  },
+  "files": [
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/zhukongqwq/zhukong-currency-system/issues"
   }
 }
